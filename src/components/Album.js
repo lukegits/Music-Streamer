@@ -5,6 +5,10 @@ class Album extends Component {
   constructor(props) {
      super(props);
      const album = albumData.find( album => {
+       // console.log(" IN THE LOOP");
+       // console.log(album);
+       // console.log("PARAMS >>>");
+       // console.log(this.props);
       return album.slug === this.props.match.params.slug
     });
 
@@ -35,10 +39,8 @@ class Album extends Component {
             <div>
            this.state.album.songs.map( (album, index) =>
                  <tr>{this.state.album.songs.title}</tr>
-                 <tr>{this.state.album.song.duration}</tr>
+                 <tr>{this.state.album.songs.duration}</tr>
              </div>
-
-           
          }
           </tbody>
         </table>
