@@ -4,24 +4,23 @@ import albumData from './../data/albums';
 class Album extends Component {
   constructor(props) {
      super(props);
-     const album = albumData.find( album => {
-       // console.log(" IN THE LOOP");
-       // console.log(album);
-       // console.log("PARAMS >>>");
-       // console.log(this.props);
-      return album.slug === this.props.match.params.slug
-    });
 
-    this.state = {
-      album: album
-    };
+   const album = albumData.find( album => {
+     return album.slug === this.props.match.params.slug
+   });
+
+   console.log(album);
+
+   this.state = {
+     album: album
+   };
 
    }
    render() {
      return (
        <section className="album">
        <section id="album-info">
-         <img id="album-cover-art" src={this.state.album.albumCover} />
+         <img id="album-cover-art" src={this.state.album.albumCover}/>
          <div className="album-details">
            <h1 id="album-title">{this.state.album.title}</h1>
            <h2 className="artist">{this.state.album.artist}</h2>
@@ -35,18 +34,23 @@ class Album extends Component {
             <col id="song-duration-column" />
           </colgroup>
           <tbody>
+          <section className='songs-titles'>
           {
-            <div>
-           this.state.album.songs.map( (album, index) =>
-                 <tr>{this.state.album.songs.title}</tr>
-                 <tr>{this.state.album.songs.duration}</tr>
+           this.state.album.songs.map( (song, index) =>
+             <div>
+                 <tr> <i class="icon ion-play"> </i> <i class="icon ion-pause"> </i>
+                   {index + 1}
+                   {song.title} {song.duration}
+                   </tr>
              </div>
-         }
+          )
+        }
+           </section>
           </tbody>
         </table>
-       </section>
-     );
+      </section>
+     )
    }
- }
+};
 
 export default Album;
