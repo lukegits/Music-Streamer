@@ -10,8 +10,6 @@ class Album extends Component {
      return album.slug === this.props.match.params.slug
    });
 
-   console.log(album);
-
    this.state = {
      album: album,
       currentSong: album.songs[0],
@@ -62,7 +60,7 @@ class Album extends Component {
      return (
        <section className="album">
        <section id="album-info">
-         <img id="album-cover-art" src={this.state.album.albumCover}/>
+         <img id="album-cover-art" src={this.state.album.albumCover} alt="album-art"/>
          <div className="album-details">
            <h1 id="album-title">{this.state.album.title}</h1>
            <h2 className="artist">{this.state.album.artist}</h2>
@@ -76,30 +74,29 @@ class Album extends Component {
             <col id="song-duration-column" />
           </colgroup>
           <tbody>
-          <section className='songs-titles'>
-          {
-           this.state.album.songs.map( (song, index) =>
-           <tr className="song" key={index} onClick={() => this.handleSongClick(song)} >
-
-                 <td className="song actions"> <i class="icon ion-play"> </i> <i class="icon ion-pause"> </i>
-                   {index + 1}
-                   {song.title} {song.duration}
-                  </td>
+          {this.state.album.songs.map( (song, index) =>
+             <tr className="song" key={index} onClick={() => this.handleSongClick(song)} >
+               <td className="song-actions">
+                 <button>
+                   <span className="song-number">  {index+1} </span>
+                   <span className="ion-play"></span>
+                   <span className="ion-pause"></span>
+                 </button>
+               </td>
+               <td className="song-title">{song.title}</td>
+               <td className="song-duration">{song.duration}</td>
              </tr>
-
-          )
-        }
-           </section>
+           )}
           </tbody>
         </table>
         <PlayerBar
-          isPlaying={this.state.isPlaying}
-          currentSong={this.state.currentSong}
-          handleSongClick={() => this.handleSongClick(this.state.currentSong)}
-          handlePrevClick={() => this.handlePrevClick()}
-          handleNextClick={() => this.handleNextClick()}
-        />
-      </section>
+      isPlaying={this.state.isPlaying}
+      currentSong={this.state.currentSong}
+      handleSongClick={() => this.handleSongClick(this.state.currentSong)}
+      handlePrevClick={() => this.handlePrevClick()} handleNextClick={() => this.handleNextClick()}
+      />
+        </section>
+
      )
    }
 };
