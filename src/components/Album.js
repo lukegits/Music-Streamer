@@ -42,21 +42,21 @@ class Album extends Component {
         this.audioElement.addEventListener('currentVol', this.eventListeners.currentVol);
       }
 
-  componentWillUnmount() {
+   componentWillUnmount() {
          this.audioElement.src = null;
          this.audioElement.removeEventListener('timeupdate', this.eventListeners.timeupdate);
          this.audioElement.removeEventListener('durationchange', this.eventListeners.durationchange);
          this.audioElement.removeEventListener('currentVol', this.eventListeners.currentVol);
        }
-  formatTime(s){
+   formatTime(s){
     return(s-(s%=60))/60+(9<s?':':':0')+s
   }
 
-  play() {
+   play() {
     this.audioElement.play();
     this.setState({ isPlaying: true });
   }
-  pause() {
+   pause() {
      this.audioElement.pause();
      this.setState({ isPlaying: false });
    }
@@ -127,7 +127,7 @@ class Album extends Component {
                  </button>
                </td>
                <td className="song-title">{song.title}</td>
-               <td className="song-duration">{song.duration}</td>
+               <td className="song-duration">{this.formatTime(song.duration)}</td>
              </tr>
            )}
           </tbody>
@@ -136,7 +136,7 @@ class Album extends Component {
       isPlaying={this.state.isPlaying}
       currentSong={this.state.currentSong}
       currentTime={this.audioElement.currentTime}
-      duration={this.audioElement.duration}
+      duration={this.formatTime(this.audioElement.duration)}
       currentVolume={this.audioElement.currentVolume}
       handleSongClick={() => this.handleSongClick(this.state.currentSong)}
       handlePrevClick={() => this.handlePrevClick()}
