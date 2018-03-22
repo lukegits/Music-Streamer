@@ -26,7 +26,7 @@ import React, { Component } from 'react';
             step="0.01"
             onChange={this.props.handleTimeChange}
           />
-          <div className="total-time">{this.props.duration || 0}</div>
+          <div className="total-time">{this.props.formatTime(this.props.duration || 0)}</div>
        </section>
        <section id="volume-control">
          <div className="icon ion-volume-low">{this.props.currentVolume}</div>

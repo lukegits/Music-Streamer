@@ -1,5 +1,12 @@
+.album-cover-art {
+    max-width:100%;
+    height:auto;
+}
+
 .App {
   text-align: center;
+  font-family: monospace;
+  background-color: lightgrey;
 }
 
 .App-logo {
@@ -20,6 +27,10 @@
 
 .App-intro {
   font-size: large;
+}
+
+.landing{
+  background-color: lightblue;
 }
 
 @keyframes App-logo-spin {

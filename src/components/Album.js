@@ -13,8 +13,8 @@ class Album extends Component {
    this.state = {
       album: album,
       currentSong: album.songs[0],
-      currentTime: 0,
-      duration: album.songs[0].duration,
+      currentTime: this.formatTime(0),
+      duration: this.formatTime(album.songs[0].duration),
       isPlaying: false,
       currentVolume: 0.5,
 
@@ -101,6 +101,7 @@ class Album extends Component {
    render() {
      console.log(this.audioElement);
      return (
+
        <section className="album">
        <section id="album-info">
          <img id="album-cover-art" src={this.state.album.albumCover} alt="album-art"/>
@@ -136,7 +137,7 @@ class Album extends Component {
       isPlaying={this.state.isPlaying}
       currentSong={this.state.currentSong}
       currentTime={this.audioElement.currentTime}
-      duration={this.formatTime(this.audioElement.duration)}
+      duration={this.audioElement.duration}
       currentVolume={this.audioElement.currentVolume}
       handleSongClick={() => this.handleSongClick(this.state.currentSong)}
       handlePrevClick={() => this.handlePrevClick()}
