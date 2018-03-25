@@ -171,10 +171,9 @@ class Album extends Component {
             () => this.handleSongClick(song)
           }
           >
-
           <
           span className = "song-number" >
-          <img src="https://i.imgur.com/YsHdG42s.jpg" alt="Paris" />
+
           {
             index + 1
           }

@@ -66,6 +66,11 @@
 }
 
 .song:hover {
+  background-image: url("https://i.imgur.com/YsHdG42s.jpg");
+    background-color: #cccccc;
+    background-repeat: no-repeat;
+   background-attachment: fixed;
+   background-position: left;
   width: 2px;
   height: 5px;
   text-indent: -9999px;
@@ -77,6 +82,7 @@
    padding: 5px;
 
 }
+
 
 
 
