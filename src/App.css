@@ -1,17 +1,51 @@
 .album-cover-art {
     max-width:100%;
     height:auto;
+    color: white;
 }
+
 
 .App {
   text-align: center;
   font-family: monospace;
-  background-color: lightgrey;
+  color: white;
+  font-size: 20px;
+  text-decoration: overline;
+  background-image: url("https://i.imgur.com/iHsIAoD.jpg");
+  max-width:100%;
+  padding-top: 25px;
+  padding: 40px;
+  height:auto;
+
+}
+
+.album {
+  text-align: center;
+  font-family: monospace;
+  color: white;
+}
+
+.album-info {
+  text-align: center;
+  font-family: monospace;
+  color: white;
+}
+
+.album-details {
+  text-align: center;
+  font-family: monospace;
+  color: white;
+}
+
+.album-title {
+  text-align: center;
+  font-family: monospace;
+  color: white;
 }
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+
 }
 
 .App-header {
@@ -23,15 +57,83 @@
 
 .App-title {
   font-size: 1.5em;
+  color: white;
 }
 
 .App-intro {
   font-size: large;
+  color: white;
 }
 
-.landing{
-  background-color: lightblue;
+.song:hover {
+  width: 2px;
+  height: 5px;
+  text-indent: -9999px;
+  max-width:25%;
+  padding-top: 5px;
+  padding: 5px;
+  border: 1px solid #ddd;
+   border-radius: 4px;
+   padding: 5px;
+
 }
+
+
+
+.landing{
+  background-image: url("https://i.imgur.com/o2D9x01.jpg");
+  color: white;
+  text-align: center;
+  font-family: monospace;
+  color: white;
+}
+
+.libraryart {
+  text-align: center;
+  font-family: monospace;
+  color: white;
+  font-size: 20px;
+}
+
+.artist-library{
+  text-align: center;
+  font-family: monospace;
+  color: white;
+  font-size: 20px;
+}
+
+.length-library {
+  text-align: center;
+  font-family: monospace;
+  color: white;
+  font-size: 20px;
+
+}
+
+.landinglink {
+  text-align: center;
+  font-family: monospace;
+  color: white;
+  font-size: 20px;
+
+}
+
+.song-list {
+  text-align: center;
+  font-family: monospace;
+  color: white;
+  font-size: 20px;
+}
+
+
+.title-library {
+  text-align: center;
+  font-family: monospace;
+  color: white;
+  font-size: 20px;
+}
+
+
 
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
