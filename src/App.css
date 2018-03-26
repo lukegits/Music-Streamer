@@ -65,26 +65,6 @@
   color: white;
 }
 
-.song:hover {
-  background-image: url("https://i.imgur.com/YsHdG42s.jpg");
-    background-color: #cccccc;
-    background-repeat: no-repeat;
-   background-attachment: fixed;
-   background-position: left;
-  width: 2px;
-  height: 5px;
-  text-indent: -9999px;
-  max-width:25%;
-  padding-top: 5px;
-  padding: 5px;
-  border: 1px solid #ddd;
-   border-radius: 4px;
-   padding: 5px;
-
-}
-
-
-
 
 .landing{
   background-image: url("https://i.imgur.com/o2D9x01.jpg");
@@ -139,6 +119,16 @@
   font-size: 20px;
 }
 
+
+
+/* .song:hover {
+  background-image: url("https://i.imgur.com/7d9auows.jpg");
+  background-repeat: no-repeat;
+  background-position: 5px 8px -5px 10px;
+  background-size: 18px 20px;
+  width: 0px;
+  height: 5px;
+} */
 
 
 @keyframes App-logo-spin {
