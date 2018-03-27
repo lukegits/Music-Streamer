@@ -121,16 +121,6 @@
 
 
 
-/* .song:hover {
-  background-image: url("https://i.imgur.com/7d9auows.jpg");
-  background-repeat: no-repeat;
-  background-position: 5px 8px -5px 10px;
-  background-size: 18px 20px;
-  width: 0px;
-  height: 5px;
-} */
-
-
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }

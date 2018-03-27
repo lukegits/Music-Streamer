@@ -7,13 +7,10 @@ import PlayerBar from './PlayerBar';
 class Album extends Component {
   constructor(props) {
     super(props);
-
     const album = albumData.find(album => {
       return album.slug === this.props.match.params.slug
     });
-
-
-    this.state = {
+   this.state = {
       album: album,
       currentSong: album.songs[0],
       currentTime: this.formatTime(0),
@@ -21,13 +18,10 @@ class Album extends Component {
       isPlaying: false,
       currentVolume: 0.5,
       showPlay: false
-
     };
-
     this.audioElement = document.createElement('audio');
     this.audioElement.src = album.songs[0].audioSrc;
     this.audioElement.volume = this.state.currentVolume;
-
   }
   componentDidMount() {
     this.eventListeners = {
@@ -51,7 +45,6 @@ class Album extends Component {
     this.audioElement.addEventListener('durationchange', this.eventListeners.durationchange);
     this.audioElement.addEventListener('currentVol', this.eventListeners.currentVol);
   }
-
   componentWillUnmount() {
     this.audioElement.src = null;
     this.audioElement.removeEventListener('timeupdate', this.eventListeners.timeupdate);
@@ -61,30 +54,18 @@ class Album extends Component {
   formatTime(s) {
     return (s - (s %= 60)) / 60 + (9 < s ? ':' : ':0') + s
   }
-
   play() {
-
     this.audioElement.play();
     this.setState({
       isPlaying: true
     });
   }
-
-
   pause() {
-
     this.audioElement.pause();
     this.setState({
       isPlaying: false
     });
   }
-
- onHover(){
-    this.setState({
-      showPlay: true
-    });
-}
-
   setSong(song) {
     this.audioElement.src = song.audioSrc;
     this.setState({
@@ -133,61 +114,51 @@ class Album extends Component {
 
 
   render() {
-    console.log(this.audioElement);
+    const playOr = this.state.showPlay;
     return (
-
-      <
-      section className = "album" >
-      <
-      section id = "album-info" >
-      <
-      img id = "album-cover-art"
+      <section className="album">
+      <section id = "album-info">
+      <img id = "album-cover-art"
       src = {
         this.state.album.albumCover
       }
       alt = "album-art" / >
-      <
-      div className = "album-details" >
-      <
-      h1 id = "album-title" > {
+      <div className = "album-details" >
+      <h1 id = "album-title" > {
         this.state.album.title
-      } < /h1> <
-      h2 className = "artist" > {
+      } < /h1> <h2 className = "artist" > {
         this.state.album.artist
-      } < /h2> <
-      div id = "release-info" > {
+      } < /h2> <div id = "release-info" > {
         this.state.album.releaseInfo
-      } < /div> < /
-      div > <
-      /section> <
-      table id = "song-list" >
-      <
-      colgroup >
-      <
-      col id = "song-number-column" / >
-      <
-      col id = "song-title-column" / >
-      <
-      col id = "song-duration-column" / >
-      <
-      /colgroup> <
-      tbody >
-
+      } < /div>
+        < /div>
+        </section>
+      <table id="song-list">
+          <colgroup>
+          <col id = "song-number-column" />
+          <col id = "song-title-column" />
+          <col id = "song-duration-column" />
+      </colgroup>
+      <tbody>
       {this.state.album.songs.map( (song, index) =>
-
             <tr className="song" key={index}>
-              <td className="song-actions" >
-                <span onMouseOver={this.props.onHover} className={this.props.showPlay ? "ion-play" : "ion-pause"} className={this.props.isPlaying ? 'ion-pause' : 'ion-play'} onClick={() => this.handleSongClick(song)}>
-                  { index+1 }
-                </span>
+              <td className="song-actions">
+                {playOr ? (
+                  <span onClick={() => this.handleSongClick(song)} onMouseEnter={ () => this.setState({currentSong: null, showPlay: true})} onMouseLeave={ () => this.setState({currentSong: null, showPlay: false})} className={this.state.currentSong === song && this.state.isPlaying ? 'ion-pause': 'ion-play'} >
+                  </span>
+                  ) : (
+                  <span onClick={() => this.handleSongClick(song)} onMouseEnter={ () => this.setState({currentSong: null, showPlay: true})} onMouseLeave={ () => this.setState({currentSong: null, showPlay: true})}  >
+                    { index+1 }
+                  </span>
+                )}
               </td>
               <td className="song-title">{song.title}</td>
               <td className="song-duration">{this.formatTime(song.duration)}</td>
-            </tr>
-          )} <
-      /tbody> < /
-      table > <
-      PlayerBar isPlaying = {
+            < /tr>
+          )}
+          < /tbody> 
+          < /table>
+          <PlayerBar isPlaying = {
         this.state.isPlaying
       }
       currentSong = {
@@ -218,17 +189,9 @@ class Album extends Component {
         (e) => this.handleVolumeChange(e)
       }
       formatTime = {
-        (s) => this.formatTime(s)
-      }
-      onHover = {
-        () => this.onHover()
-      }
-      /> < /
-      section >
-
+        (s) => this.formatTime(s)}/> < /section>
     )
   }
-
 };
 
 export default Album;
